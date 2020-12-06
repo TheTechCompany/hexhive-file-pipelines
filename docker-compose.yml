@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  mq: 
+    image: rabbitmq:3.8-management-alpine
+  stp2glb:
+    image: balbatross/cae-stp2glb
+    depends_on:
+      - mq
+
