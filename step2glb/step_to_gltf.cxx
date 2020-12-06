@@ -101,8 +101,8 @@ int main(int argc, char *argv[])
     return 1;
   }
 
-  std::string output_path = "./output.glb";
-  std::string source_path = "./GA.stp";
+  Standard_CString output_path = "./output.glb";
+  Standard_CString source_path = "./GA.stp";
 
   for(int i = 1; i < argc; ++i){
     std::string arg = argv[i];
