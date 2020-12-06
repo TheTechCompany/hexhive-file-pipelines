@@ -33,7 +33,7 @@ static void show_usage(std::string name)
 
 int step_to_glb(std::string source_path, std::string output_path)
 {
-  std::cout << "Processing: " << source << " -> " << output << "\n" << std::endl;
+  std::cout << "Processing: " << source_path << " -> " << output_path << "\n" << std::endl;
 
   Handle(TDocStd_Document) xdeDoc = new TDocStd_Document("process");
 
