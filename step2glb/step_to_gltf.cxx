@@ -111,7 +111,7 @@ int main(int argc, char *argv[])
       return 0;
     }else if((arg == "-o") || (arg == "--output")){
       if(i + 1 < argc){
-        output_path = argv[i++];
+        output_path = argv[i + 1];
       }else{
         std::cerr << "--output option requires one argument." << std::endl;
         return 1;
