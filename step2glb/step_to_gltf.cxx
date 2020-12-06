@@ -31,7 +31,7 @@ static void show_usage(std::string name)
             << std::endl; 
 }
 
-int step_to_glb(std::string source_path, std::string output_path)
+int step_to_glb(Standard_CString source_path, Standard_CString output_path)
 {
   std::cout << "Processing: " << source_path << " -> " << output_path << "\n" << std::endl;
 
@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
       if(i + 1 < argc){
         output_path = argv[i++];
       }else{
-        std::cerr << "--output option requires one argument." << std::cendl;
+        std::cerr << "--output option requires one argument." << std::endl;
         return 1;
       }
     }else{
