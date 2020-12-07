@@ -1,6 +1,6 @@
 FROM node:14-alpine3.10
 
-RUN apk add python3 python3-pip
+RUN apk add python3 py3-pip
 
 RUN npm i -g gltfpack
 
