@@ -11,11 +11,11 @@ RUN ./make.sh
 
 ADD GA.stp .
 
-ADD worker.py .
+
 RUN apt-get install python3 python3-pip -y
 
 RUN pip3 install pika
-
+ADD worker.py .
 ADD wait-for-it.sh .
 
 CMD ["./wait-for-it.sh", "rabbit1:5672", "--", "/usr/bin/python3", "worker.py"]

@@ -3,7 +3,7 @@ import subprocess
 
 channel = None
 credentals = pika.PlainCredentials('rabbitmq', 'rabbitmq')
-parameters = pika.ConnectionParameters('localhost', 5672, '/', credentals)
+parameters = pika.ConnectionParameters('rabbit1', 5672, '/', credentals)
 
 def handle_delivery(channel, method, header, body):
     print(body)
