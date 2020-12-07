@@ -1,6 +1,6 @@
 FROM node:14-buster
 
-RUN apt-get update && apt-get install python3 python3-pip
+RUN apt-get update && apt-get install python3 python3-pip -y
 
 RUN npm i -g gltfpack
 
