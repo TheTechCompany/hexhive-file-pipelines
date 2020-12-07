@@ -13,8 +13,6 @@ services:
       - "127.0.0.1:5672:5672"
     labels:
       NAME: "rabbitmq1"
-    volumes:
-      - "./enabled_plugins:/etc/rabbitmq/enabled_plugins"
   stp2glb:
     image: balbatross/cae-stp2glb
     depends_on:
