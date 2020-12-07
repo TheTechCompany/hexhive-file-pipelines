@@ -17,7 +17,8 @@ def handle_delivery(channel, method, header, body):
         capture_output=True)
 
     stdout = process_result.stdout.decode('utf-8')
-    try(stdout.index('Finished glTF 2.0 export')):
+    try:
+        index = stdout.index('Finished glTF 2.0 export')
         print("Success moving to glb2glb not full success but enough to get us moving")
         channel.basic_publish(exchange='', routing_key='gltfpack', body=body)
         channel.basic_ack(delivery_tag=method.delivery_tag)
