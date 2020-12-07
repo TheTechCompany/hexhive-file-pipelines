@@ -1,7 +1,5 @@
 FROM node:14-alpine3.10
 
-RUN apt-get update && apt-get install python3 python3-pip -y
-
 RUN npm i -g gltfpack
 
 RUN pip3 install pika
