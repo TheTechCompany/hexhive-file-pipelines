@@ -15,6 +15,7 @@ services:
       NAME: "rabbitmq1"
   stp2glb:
     image: balbatross/cae-stp2glb
+    build: ./step2glb
     depends_on:
       - rabbit1
     volumes:
