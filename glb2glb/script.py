@@ -20,7 +20,6 @@ context.scene.name = model
 for scene in bpy.data.scenes:
     for obj in scene.objects:
         obj.select_set(True)
-        scene.objects.unlink(obj)
         bpy.ops.object.delete()
 
 bpy.ops.import_scene.gltf(filepath=inPath, filter_glob=".glb")
