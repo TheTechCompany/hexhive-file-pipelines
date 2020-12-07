@@ -3,15 +3,16 @@ import os
 
 context = bpy.context
 
-model_path = "/glb2glb"
-model = "exported.glb"
+model = os.environ['MODEL']
+model_out_path = "/data/cae/glb2glb"
+model_in_path = "/data/cae/stp2glb"
 
 scene = bpy.data.scenes.new("Scene")
 
-path = os.path.join(model_path, model)
+inPath = os.path.join(model_in_path, model)
+outPath = os.path.join(model_out_path, model)
 
 context.scene.name = model
 
-bpy.ops.import_scene.gltf(filepath=path, filter_glob=".glb")
-
-bpy.ops.export_scene.gltf(export_format="GLB", filepath=os.path.join(model_path, "repacked.glb"))
+bpy.ops.import_scene.gltf(filepath=inPath, filter_glob=".glb")
+bpy.ops.export_scene.gltf(export_format="GLB", filepath=outPath)

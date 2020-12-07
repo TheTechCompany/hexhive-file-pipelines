@@ -22,6 +22,7 @@ services:
       - "/home/ubuntu/efs/:/data/cae"
   glb2glb:
     image: balbatross/cae-glb2glb
+    build: ./glb2glb
     depends_on:
       - rabbit1
     volumes:
