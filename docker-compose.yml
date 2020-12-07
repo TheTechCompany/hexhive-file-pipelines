@@ -9,8 +9,8 @@ services:
       RABBITMQ_DEFAULT_PASS: "rabbitmq"
       RABBITMQ_DEFAULT_VHOST: "/"
     ports:
-      - "15672:15672"
-      - "5672:5672"
+      - "127.0.0.1:15672:15672"
+      - "127.0.0.1:5672:5672"
     labels:
       NAME: "rabbitmq1"
     volumes:
@@ -19,4 +19,18 @@ services:
     image: balbatross/cae-stp2glb
     depends_on:
       - rabbit1
+    volumes:
+      - "/home/ubuntu/efs/:/data/cae"
+  glb2glb:
+    image: balbatross/cae-glb2glb
+    depends_on:
+      - rabbit1
+    volumes:
+      - "/home/ubuntu/efs/:/data/cae"
+  gltfpack:
+    image: balbatross/cae-gltfpack
+    depends_on:
+      - rabbit1
+    volumes:
+      - "/home/ubuntu/efs/:/data/cae"
 

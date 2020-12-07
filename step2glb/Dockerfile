@@ -11,4 +11,10 @@ RUN ./make.sh
 
 ADD GA.stp .
 
-CMD ./step_to_gltf -o GA.glb GA.stp
+ADD worker.py .
+RUN apt-get install python -y
+
+RUN pip install pika
+
+CMD python worker.py 
+#./step_to_gltf -o GA.glb GA.stp
