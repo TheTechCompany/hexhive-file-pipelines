@@ -1,6 +1,6 @@
-FROM node:14-alpine3.10
+FROM node:14-buster
 
-RUN apk add python3 py3-pip
+RUN apt-get update && apt-get install python3 python3-pip
 
 RUN npm i -g gltfpack
 
