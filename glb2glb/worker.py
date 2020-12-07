@@ -1,7 +1,7 @@
 import pika
 import subprocess
 import os
-
+from subprocess import PIPE
 
 channel = None
 credentals = pika.PlainCredentials('rabbitmq', 'rabbitmq')
@@ -14,7 +14,7 @@ def handle_delivery(channel, method, header, body):
 
     process_result = subprocess.run(args=['blender', '--background',
         '--python', 'script.py', '--', input_ref], env={"Model": input_ref},
-        capture_output=True)
+        stdout=PIPE, stderr=PIPE)
 
     stdout = process_result.stdout.decode('utf-8')
     try:
