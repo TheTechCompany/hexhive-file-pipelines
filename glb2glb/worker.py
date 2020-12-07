@@ -10,8 +10,7 @@ parameters = pika.ConnectionParameters('rabbit1', 5672, '/', credentals)
 def handle_delivery(channel, method, header, body):
     print(body)
     input_ref = body.decode('utf-8')
-    
-    v = process(input_ref)
+
 
     process_result = subprocess.run(args=['blender', '--background', '--python', 'script.py', '--', input_ref], env={"Model": input_ref})
 
