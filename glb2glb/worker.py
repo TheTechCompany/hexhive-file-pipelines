@@ -1,5 +1,6 @@
 import pika
 import subprocess
+import os
 
 channel = None
 credentals = pika.PlainCredentials('rabbitmq', 'rabbitmq')
@@ -8,6 +9,7 @@ parameters = pika.ConnectionParameters('rabbit1', 5672, '/', credentals)
 def handle_delivery(channel, method, header, body):
     print(body)
     input_ref = body.decode('utf-8')
+    os.environ['MODEL'] = input_ref
     process_result = subprocess.run(args=['blender',
         '--background', '--python', 'script.py'], env={"Model": input_ref})
 
