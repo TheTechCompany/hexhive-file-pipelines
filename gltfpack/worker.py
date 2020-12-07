@@ -10,9 +10,10 @@ def handle_delivery(channel, method, header, body):
     print(body)
     input_ref = body.decode('utf-8')
 
+    os.chdir("/data/cae/glb2glb")
     process_result = subprocess.run(args=['/usr/local/bin/gltfpack', '-i',
-    '/data/cae/glb2glb/' + input_ref + '.glb', '-tc', '-c', '-o',
-    '/data/cae/gltfpack/'+ input_ref + '.glb'], env={"Model": input_ref})
+    './' + input_ref + '.glb', '-tc', '-c', '-o',
+    '../gltfpack/'+ input_ref + '.glb'], env={"Model": input_ref})
 
     if(process_result.returncode == 0):
         print("Success moving to gltfpack not full success but enough to get us moving")
