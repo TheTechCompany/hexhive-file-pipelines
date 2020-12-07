@@ -8,8 +8,8 @@ parameters = pika.ConnectionParameters('rabbit1', 5672, '/', credentals)
 def handle_delivery(channel, method, header, body):
     print(body)
     input_ref = body.decode('utf-8')
-    process_result = subprocess.run(['MODEL=' + input_ref, 'blender',
-        '--background', '--python', 'script.py'])
+    process_result = subprocess.run(args=['blender',
+        '--background', '--python', 'script.py'], env={"Model": input_ref})
 
     if(process_result.returncode == 0):
         print("Success moving to glb2glb")
