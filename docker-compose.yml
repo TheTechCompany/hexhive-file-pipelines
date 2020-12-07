@@ -1,5 +1,11 @@
 version: "3.8"
 services:
+  mongo:
+    image: "mongo"
+    volumes:
+      - "/home/ubuntu/efs/db:/data/db"
+    ports:
+      - "127.0.0.1:27017:27017"
   rabbit1:
     image: "rabbitmq:3-management"
     hostname: "rabbit1"
@@ -18,6 +24,7 @@ services:
     build: ./step2glb
     depends_on:
       - rabbit1
+      - mongo
     volumes:
       - "/home/ubuntu/efs/:/data/cae"
   glb2glb:
@@ -25,6 +32,7 @@ services:
     build: ./glb2glb
     depends_on:
       - rabbit1
+      - mongo
     volumes:
       - "/home/ubuntu/efs/:/data/cae"
   gltfpack:
@@ -32,6 +40,7 @@ services:
     build: ./gltfpack
     depends_on:
       - rabbit1
+      - mongo
     volumes:
       - "/home/ubuntu/efs/:/data/cae"
 
