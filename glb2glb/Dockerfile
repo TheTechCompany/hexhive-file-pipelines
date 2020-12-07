@@ -11,4 +11,5 @@ ADD script.py .
 ADD worker.py .
 ADD wait-for-it.sh .
 
-CMD ["./wait-for-it.sh", "rabbit1:5672", "--", "/usr/bin/python3", "worker.py"]
+CMD ["./wait-for-it.sh", "rabbit1:5672", "--", "blender", "--background",
+"--python", "worker.py"]
