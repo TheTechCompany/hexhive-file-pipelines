@@ -19,7 +19,7 @@ def handle_delivery(channel, method, header, body):
 
     os.chdir("/data/cae/glb2glb")
     process_result = subprocess.run(args=['/usr/local/bin/gltfpack', '-i',
-    './' + input_ref + '.glb', '-tc', '-c', '-o',
+    './' + input_ref + '.glb', '-tc', '-kn', '-km', '-c', '-o',
     '../gltfpack/'+ input_ref + '.glb'], env={"Model": input_ref})
 
     if(process_result.returncode == 0):
