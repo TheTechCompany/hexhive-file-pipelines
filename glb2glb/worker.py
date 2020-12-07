@@ -13,7 +13,7 @@ model_out_path = "/data/cae/glb2glb"
 model_in_path = "/data/cae/stp2glb"
 
 def process(model):
-     for scene in bpy.data.scenes:
+    for scene in bpy.data.scenes:
         for obj in scene.objects:
             scene.objects.unlink(obj)
     scene = bpy.data.scenes.new("Scene")
