@@ -14,8 +14,8 @@ def handle_delivery(channel, method, header, body):
 
     process_result = subprocess.run(args=['blender', '--background', '--python', 'script.py', '--', input_ref], env={"Model": input_ref})
 
-    if(process_result.resultcode == 0):
-        print("Success moving to glb2glb")
+    if(process_result.returncode == 1):
+        print("Success moving to glb2glb not full success but enough to get us moving")
         channel.basic_publish(exchange='', routing_key='gltfpack', body=body)
         channel.basic_ack(delivery_tag=method.delivery_tag)
     else:

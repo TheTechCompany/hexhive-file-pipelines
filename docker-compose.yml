@@ -29,6 +29,7 @@ services:
       - "/home/ubuntu/efs/:/data/cae"
   gltfpack:
     image: balbatross/cae-gltfpack
+    build: ./gltfpack
     depends_on:
       - rabbit1
     volumes:
