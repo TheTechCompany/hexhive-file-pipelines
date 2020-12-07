@@ -17,5 +17,11 @@ outPath = os.path.join(model_out_path, model)
 
 context.scene.name = model
 
+for scene in bpy.data.scenes:
+    for obj in scene.objects:
+        obj.select_set(True)
+        scene.objects.unlink(obj)
+        bpy.ops.object.delete()
+
 bpy.ops.import_scene.gltf(filepath=inPath, filter_glob=".glb")
 bpy.ops.export_scene.gltf(export_format="GLB", filepath=outPath)
