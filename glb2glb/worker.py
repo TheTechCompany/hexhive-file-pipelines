@@ -12,13 +12,16 @@ def handle_delivery(channel, method, header, body):
     input_ref = body.decode('utf-8')
 
 
-    process_result = subprocess.run(args=['blender', '--background', '--python', 'script.py', '--', input_ref], env={"Model": input_ref})
+    process_result = subprocess.run(args=['blender', '--background',
+        '--python', 'script.py', '--', input_ref], env={"Model": input_ref},
+        capture_output=True)
 
-    if(process_result.returncode == 1):
+    stdout = process_result.stdout.decode('utf-8')
+    try(stdout.index('Finished glTF 2.0 export')):
         print("Success moving to glb2glb not full success but enough to get us moving")
         channel.basic_publish(exchange='', routing_key='gltfpack', body=body)
         channel.basic_ack(delivery_tag=method.delivery_tag)
-    else:
+    except ValueError:
         print("Failure returning it to the queue")
         channel.basic_nack(delivery_tag=method.delivery_tag)
 
