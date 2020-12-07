@@ -18,5 +18,5 @@ RUN pip3 install pika
 
 ADD wait-for-it.sh .
 
-CMD ./wait-for-it.sh rabbit1:5672 -- python3 worker.py 
+CMD ["./wait-for-it.sh", "rabbit1:5672", "--", "/usr/bin/python3", "worker.py"]
 #./step_to_gltf -o GA.glb GA.stp
