@@ -14,7 +14,7 @@ ADD GA.stp .
 ADD worker.py .
 RUN apt-get install python3 python3-pip -y
 
-RUN pip install pika
+RUN pip3 install pika
 
-CMD python worker.py 
+CMD python3 worker.py 
 #./step_to_gltf -o GA.glb GA.stp
