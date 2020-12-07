@@ -1,9 +1,12 @@
 import bpy
 import os
+import sys
 
 context = bpy.context
+argv = sys.argv
 
-model = os.environ['MODEL']
+model = argv[argv.index('--') + 1:]
+model = model[0]
 model_out_path = "/data/cae/glb2glb"
 model_in_path = "/data/cae/stp2glb"
 
