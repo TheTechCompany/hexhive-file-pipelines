@@ -9,14 +9,22 @@ ADD make.sh .
 
 RUN ./make.sh
 
-ADD GA.stp .
 
+RUN apt-get update && apt-get install nodejs npm -y
 
-RUN apt-get install python3 python3-pip -y
+RUN npm i -g n && n 14.0.0
 
-RUN pip3 install pika pymongo
-ADD worker.py .
+WORKDIR /step2glb/worker/
+
+ADD worker/package.json .
+
+RUN npm i
+
+ADD worker/index.js .
+ADD worker/ipfs.js .
+
+WORKDIR /step2glb/
 ADD wait-for-it.sh .
 
-CMD ["./wait-for-it.sh", "rabbit1:5672", "--", "/usr/bin/python3", "worker.py"]
+CMD ["./wait-for-it.sh", "${MQ_HOST}:5672", "--", "/usr/bin/node", "worker"]
 #./step_to_gltf -o GA.glb GA.stp

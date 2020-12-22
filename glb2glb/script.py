@@ -6,14 +6,16 @@ context = bpy.context
 argv = sys.argv
 
 model = argv[argv.index('--') + 1:]
+job = argv[argv.index('--') + 2:]
 model = model[0]
-model_out_path = "/data/cae/glb2glb"
-model_in_path = "/data/cae/stp2glb"
+job = job[0]
+model_out_path = "/tmp/"
+model_in_path = "/tmp/"
 
 scene = bpy.data.scenes.new("Scene")
 
 inPath = os.path.join(model_in_path, model)
-outPath = os.path.join(model_out_path, model)
+outPath = os.path.join(model_out_path, job)
 
 context.scene.name = model
 
