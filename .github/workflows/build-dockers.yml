@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy: 
       matrix:
-        pipelines: [STP2GLB]
+        pipelines: [stp2glb]
 
     steps:
       - name: checkout
