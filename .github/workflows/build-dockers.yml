@@ -1,0 +1,43 @@
+name: Build Dockers
+
+on:
+  push: 
+    branches:
+      - master
+
+jobs:
+  build_docker:
+    runs-on: ubuntu-latest
+    strategy: 
+      matrix:
+        pipelines: [STP2GLB]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v1
+      
+      - name: Setup docker buildx
+        uses: docker/setup-buildx-action@v1
+      
+      - name: Login to dockerhub
+        uses: docker/login-action@v1
+        with: 
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Build and push 
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with: 
+          context: .
+          file: ./${{ matrix.pipelines }}.Dockerfile
+          push: true
+          tags: thetechcompany/hexhive-file-converter-${{ matrix.pipelines }}:latest-next
+          build-args: |
+            BUILD_ENV=github
+  
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
