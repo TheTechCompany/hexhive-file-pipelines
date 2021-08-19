@@ -18,6 +18,7 @@ WORKDIR /runner/
 
 ADD package.json .
 ADD lerna.json .
+ADD tsconfig.json .
 
 RUN npm i
 
