@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v2
         with: 
           context: .
-          file: ./${{ matrix.pipelines }}.Dockerfile
+          file: ./dockerfiles/${{ matrix.pipelines }}.Dockerfile
           push: true
           tags: thetechcompany/hexhive-file-converter-${{ matrix.pipelines }}:latest-next
           build-args: |
