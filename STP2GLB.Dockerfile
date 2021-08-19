@@ -17,6 +17,7 @@ RUN npm i -g n && n 14.0.0
 WORKDIR /runner/
 
 ADD package.json .
+ADD lerna.json .
 
 RUN npm i
 
