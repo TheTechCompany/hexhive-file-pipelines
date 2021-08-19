@@ -1,6 +1,6 @@
 FROM balbatross/occt:latest
 
-RUN apt-get install clang -y 
+RUN apt-get update &&  apt-get install clang -y 
 
 WORKDIR /runner/packages/pipelines/step2glb
 
