@@ -27,9 +27,9 @@ COPY packages/pipelines/step2glb ./packages/pipelines/step2glb
 
 RUN npx lerna bootstrap 
 
-RUN npx lerna run build --scope stp2glb
+#RUN npx lerna run build --scope stp2glb
 
 WORKDIR /runner/packages/pipelines/step2glb
 
-CMD ["yarn", "start:prod"]
+CMD ["npm", "run", "start"]
 #./step_to_gltf -o GA.glb GA.stp
