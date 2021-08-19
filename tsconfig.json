@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./packages",
+    "paths": {
+      "base-worker": ["./shared/base-worker/src"]
+    }
+  }
+}

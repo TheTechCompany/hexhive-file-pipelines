@@ -1,0 +1,35 @@
+{
+  "name": "base-worker",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Ross Leitch <professional.balbatross@gmail.com>",
+  "homepage": "https://github.com/TheTechCompany/cae-workers/tree/main/packages/base-worker#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheTechCompany/cae-workers.git"
+  },
+  "scripts": {
+    "start:prod": "node dist/index.js",
+    "build": "tsc -b",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/TheTechCompany/cae-workers/issues"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "ipfs-http-client": "^52.0.1",
+    "nanoid": "^3.1.25"
+  }
+}
