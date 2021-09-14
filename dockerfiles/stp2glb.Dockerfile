@@ -16,20 +16,7 @@ RUN npm i -g n && n 14.0.0
 
 WORKDIR /runner/
 
-ADD package.json .
-ADD lerna.json .
-ADD tsconfig.json .
-
-RUN npm i
-
-COPY packages/shared ./packages/shared
-COPY packages/pipelines/step2glb ./packages/pipelines/step2glb
-
-RUN npx lerna bootstrap 
-
-#RUN npx lerna run build --scope stp2glb
-
-WORKDIR /runner/packages/pipelines/step2glb
+COPY . .
 
 CMD ["npm", "run", "start"]
 #./step_to_gltf -o GA.glb GA.stp
