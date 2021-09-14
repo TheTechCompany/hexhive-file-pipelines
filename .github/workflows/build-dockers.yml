@@ -35,7 +35,7 @@ jobs:
           context: ./packages/pipelines/${{matrix.pipelines}}
           file: ./dockerfiles/${{ matrix.pipelines }}.Dockerfile
           push: true
-          tags: thetechcompany/hexhive-file-converter-${{ matrix.pipelines }}:latest-next
+          tags: thetechcompany/hexhive-file-converter-${{ matrix.pipelines }}:latest
           build-args: |
             BUILD_ENV=github
   
