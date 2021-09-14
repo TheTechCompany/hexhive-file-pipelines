@@ -2,10 +2,10 @@ FROM balbatross/occt:latest
 
 RUN apt-get update &&  apt-get install clang -y 
 
-WORKDIR /runner/packages/pipelines/step2glb
+WORKDIR /runner
 
-ADD ./packages/pipelines/step2glb/step_to_gltf.cxx .
-ADD ./packages/pipelines/step2glb/make.sh .
+ADD ./step_to_gltf.cxx .
+ADD ./make.sh .
 
 RUN ./make.sh
 
