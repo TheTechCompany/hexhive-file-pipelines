@@ -32,7 +32,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with: 
-          context: .
+          context: ./packages/pipelines/${{matrix.pipelines}}
           file: ./dockerfiles/${{ matrix.pipelines }}.Dockerfile
           push: true
           tags: thetechcompany/hexhive-file-converter-${{ matrix.pipelines }}:latest-next
