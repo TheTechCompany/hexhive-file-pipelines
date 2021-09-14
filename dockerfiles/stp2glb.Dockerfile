@@ -10,10 +10,6 @@ ADD ./packages/pipelines/step2glb/make.sh .
 RUN ./make.sh
 
 
-RUN apt-get update && apt-get install nodejs npm -y
-
-RUN npm i -g n && n 14.0.0
-
 WORKDIR /runner/
 
 COPY . .
