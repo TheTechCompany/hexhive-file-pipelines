@@ -1,5 +1,4 @@
-FROM ikester/blender-autobuild:2.82a-bionic
-
+FROM nytimes/blender:2.91-cpu-ubuntu18.04
 
 WORKDIR /glb2glb/worker
 
